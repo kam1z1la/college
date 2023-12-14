@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern GURU</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
+    <link href="modal.css" rel="stylesheet">
+</head>
+<body> 
+
+  <header>
+    <a class="logo" href="home-page.html"><h1>Pattern Guru</h1></a>
+    <nav>
+      <ul class="nav_links">
+        <li><a href="home-page.html" rel="stylesheet">Головна</a></li>
+        <li><a href="paterns-page.html">Патерни</a></li>
+      </ul>
+
+      <ul class="nav_links"> 
+         <button class="dropdown-btn" aria-haspopup="menu">
+          <span>Контакти</span>
+          <span class="arrow"></span>
+        </button>
+        <ul class="dropdown-content" role="menu">
+          <li style="--delay: 1;"><a onclick="copyText('+3606767890')">+3606767890</a></li>
+          <li style="--delay: 2;"><a onclick="copyText('pibandepala@gmail.com')">pibandepala@gmail.com</a></li>
+          <li style="--delay: 3;"><a class="popup-trigger">Написати нам</a></li>            
+        </ul>
+     </nav>
+
+     <div class="popup">
+      <div class="popup__content">
+        <div class="popup__body">
+          <button class="popup__close" type="button"></button>
+          <form id="myForm">
+            <div class="form-group position-relative">
+              <input type="text" id="formName" class="form-control form-control-lg thick" placeholder="Name">
+            </div><br>
+    
+            <div class="form-group position-relative">
+              <input type="email" id="formEmail" class="form-control form-control-lg thick" placeholder="E-mail">
+            </div><br>
+    
+            <div class="form-group message">
+              <textarea id="formMessage" class="form-control form-control-lg" rows="7" placeholder="Mensagem"></textarea>
+            </div><br>
+    
+            <div class="text-center">
+              <button type="button" class="btn btn-primary" onclick="validateForm()">Send message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+      
+<main> 
+
+    <div class="spacer">
+      <h2>Привіт!</h2>
+    </div>
+
+    <div class="spacer">
+       <h3>Pattern GURU присвячений темним матеріям програмування, а саме патернам проектування та іншим важливим темам у світі програмування</h3>
+    </div>
+
+    <div class="spacer">
+      <p>Цей сайт створено з метою просвітлення і навчання людей про важливі теми в світі програмування, такі як патерни проектування. Наша основна мета - розширити розуміння та навички у програмуванні для всіх, від початківців до досвідчених розробників..</p>
+    </div>
+
+    <div class="spacer">
+        <div class="image-text-container">
+          <img src="./photos/pattern-design.png" alt="pattern-design">
+          <div class="text">
+            <h2>Патерни проектування</h2>
+            <p>Паттерни (або шаблони) проектування описують типові способи вирішення проблем, що часто зустрічаються при проектуванні програм.</p>
+            <p>Додавання нового транспортного класу до програми викликає проблему Додати новий клас до програми не так просто, якщо решта коду вже пов’язана з існуючими класами. Чудова новина, чи не так? Але як щодо коду? Зараз більша частина вашого коду пов’язана з класом Truck. Додавання кораблів у програму потребує внесення змін до всієї кодової бази. Крім того, якщо пізніше ви вирішите додати інший вид транспорту в додаток, вам, ймовірно, доведеться внести всі ці зміни знову. У результаті ви отримаєте досить неприємний код, пронизаний умовними виразами, які змінюють поведінку програми залежно від класу транспортних об’єктів.</p>
+            <a href="paterns-page.html"><button class="btn btn-sm btn-outline-dark" type="submit">Перейти до Патернів</button></a>
+          </div>
+        </div>
+    </div>
+
+</main>   
+
+
+<div class="footer">
+  <footer>
+         <div class="row">
+          <div>
+              <h3 class="footer-titles">Слідкуй за нами!</h3>
+                   <a href="https:/twitter.com/Lov1tsk1y" target="_blank" class="footer-social-network-icons">
+                       <img src="https://uploads-ssl.webflow.com/5966ea9a9217ca534caf139f/5c8dbf0a2f2b67e3b3ba079c_Twitter%20Icon.svg" width="20" alt="Twitter icon">
+                   </a>
+                   <a href="https://instagram.com/kam1z1le?igshid=OGQ5ZDc2ODk2ZA==" target="_blank" class="footer-social-network-icons">
+                       <img src="https://uploads-ssl.webflow.com/5966ea9a9217ca534caf139f/5c8dbfe70fcf5a0514c5b1da_Instagram%20Icon.svg" width="20" alt="Instagram icon">
+                   </a>
+                   <a href="https://www.linkedin.com/in/vadim-novitskyi-2aa965284" target="_blank" class="footer-social-network-icons">
+                       <img src="https://uploads-ssl.webflow.com/5966ea9a9217ca534caf139f/5c8dc0002f2b676eb4ba0869_LinkedIn%20Icon.svg" width="20" alt="LinkedIn Icon">
+                   </a>
+          </div>
+      
+         <div class="row">
+              <ul>
+                  <li><a href="home-page.html" rel="stylesheet">Головна</a></li>
+                  <li><a href="paterns-page.html">Патерни</a></li>
+              </ul>
+          </div>
+      
+          <div class="row">
+              ЗРОБЛЕНО СТУДЕНТОМ групи П-732-42 @ 2023
+           </div>
+    </footer> 
+  </div>
+
+<script src="copyText.js"></script>
+<script src="modal.js"></script>
+<script src="validForm.js"></script>
+
+</body>
+</html>

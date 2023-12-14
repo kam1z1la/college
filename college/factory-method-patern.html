@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фабричний метод</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
+    <link href="modal.css" rel="stylesheet">
+</head>
+<body> 
+
+    <header>
+        <a class="logo" href="home-page.html"><h1>Pattern Guru</h1></a>
+        <nav>
+          <ul class="nav_links">
+            <li><a href="home-page.html" rel="stylesheet">Головна</a></li>
+            <li><a href="paterns-page.html">Патерни</a></li>
+          </ul>
+
+          <ul class="nav_links"> 
+             <button class="dropdown-btn" aria-haspopup="menu">
+              <span>Контакти</span>
+              <span class="arrow"></span>
+            </button>
+            <ul class="dropdown-content" role="menu">
+              <li style="--delay: 1;"><a onclick="copyText('+3606767890')">+3606767890</a></li>
+              <li style="--delay: 2;"><a onclick="copyText('pibandepala@gmail.com')">pibandepala@gmail.com</a></li>
+              <li style="--delay: 3;"><a class="popup-trigger">Написати нам</a></li>            
+            </ul>
+         </nav>
+
+         <div class="popup">
+          <div class="popup__content">
+            <div class="popup__body">
+              <button class="popup__close" type="button"></button>
+              <form id="myForm">
+                <div class="form-group position-relative">
+                  <input type="text" id="formName" class="form-control form-control-lg thick" placeholder="Name">
+                </div><br>
+        
+                <div class="form-group position-relative">
+                  <input type="email" id="formEmail" class="form-control form-control-lg thick" placeholder="E-mail">
+                </div><br>
+        
+                <div class="form-group message">
+                  <textarea id="formMessage" class="form-control form-control-lg" rows="7" placeholder="Mensagem"></textarea>
+                </div><br>
+        
+                <div class="text-center">
+                  <button type="button" class="btn btn-primary" onclick="validateForm()">Send message</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+</header>
+
+<main> 
+    <div class="spacer">
+       <h1>Фабричний метод</h1>
+    </div>
+
+    <div class="spacer">
+    <p>Фабричний метод (Factory Method) - це породжуючий патерн проектування, який дозволяє визначити інтерфейс створення об'єкта, але залишає підклас рішення про те, який клас інстанціювати.  </p>
+    <img src="https://refactoring.guru/images/patterns/content/factory-method/factory-method-en.png?id=cfa26f33dc8473e803fadae0d262100a" alt="Factory">
+    </div>
+
+    <div class="spacer">
+    <h2>Яку проблему вірішує</h2>
+    </div>
+
+    <div class="spacer">
+    <p>Уявіть, що ви створюєте додаток для управління логістикою. Перша версія вашої програми може обслуговувати лише транспортування вантажівками, тому основна частина вашого коду міститься в класі Truck.  Через деякий час ваш додаток стає досить популярним. Щодня ви отримуєте десятки запитів від компаній морського транспорту щодо включення морської логістики в додаток.</p>  
+    <img src="https://refactoring.guru/images/patterns/diagrams/factory-method/problem1-en.png?id=de638561be0bbb1025ada6bfcb815def" alt="Problem">
+    <p>Додавання нового транспортного класу до програми викликає проблему Додати новий клас до програми не так просто, якщо решта коду вже пов’язана з існуючими класами.  Чудова новина, чи не так? Але як щодо коду? Зараз більша частина вашого коду пов’язана з класом Truck. Додавання кораблів у програму потребує внесення змін до всієї кодової бази. Крім того, якщо пізніше ви вирішите додати інший вид транспорту в додаток, вам, ймовірно, доведеться внести всі ці зміни знову.  У результаті ви отримаєте досить неприємний код, пронизаний умовними виразами, які змінюють поведінку програми залежно від класу транспортних об’єктів.</p>
+    </div>
+
+    <div class="spacer">
+    <h2>Вирішення проблеми</h2>
+    </div>  
+
+    <div class="spacer">
+    <p>Патерн Factory Method пропонує замінити прямі виклики побудови об’єкта (за допомогою оператора new) на виклики спеціального фабричного методу. Не хвилюйтеся: об’єкти все ще створюються за допомогою оператора new, але він викликається з фабричного методу. Об’єкти, повернуті фабричним методом, часто називають продуктами.</p>  
+    <h2>Структура коду:</h2>
+    <img src="https://refactoring.guru/images/patterns/diagrams/factory-method/solution2-en.png?id=db5de848c1d490b835666ef54d131d46" alt="Structure">
+    <p>Наприклад, класи Truck і Ship повинні реалізовувати транспортний інтерфейс, який оголошує метод під назвою «доставити». Кожен клас реалізує цей метод по-різному: вантажівки доставляють вантаж по суші, кораблі доставляють вантаж морем. Фабричний метод у класі RoadLogistics повертає об’єкти вантажівки, тоді як фабричний метод у класі SeaLogistics повертає кораблі. <br> 
+        Однак існує невелике обмеження: підкласи можуть повертати різні типи продуктів, лише якщо ці продукти мають спільний базовий клас або інтерфейс. Крім того, фабричний метод у базовому класі повинен мати тип повернення, оголошений як цей інтерфейс.</p>
+    </div>
+
+    <div class="spacer">
+    <h2>Приклад коду на C#:</h2>
+    <section>
+        <pre>
+            using System;
+
+            namespace RefactoringGuru.DesignPatterns.FactoryMethod.Conceptual
+            {
+
+                abstract class Creator
+                {
+                    public abstract IProduct FactoryMethod();
+ 
+                    public string SomeOperation()
+                    {
+                        var product = FactoryMethod();
+                        var result = "Creator: The same creator's code has just worked with "
+                            + product.Operation();
+            
+                        return result;
+                    }
+                }
+
+                class ConcreteCreator1 : Creator
+                {
+                    public override IProduct FactoryMethod()
+                    {
+                        return new ConcreteProduct1();
+                    }
+                }
+            
+                class ConcreteCreator2 : Creator
+                {
+                    public override IProduct FactoryMethod()
+                    {
+                        return new ConcreteProduct2();
+                    }
+                }
+            
+                public interface IProduct
+                {
+                    string Operation();
+                }
+            
+                class ConcreteProduct1 : IProduct
+                {
+                    public string Operation()
+                    {
+                        return "{Result of ConcreteProduct1}";
+                    }
+                }
+            
+                class ConcreteProduct2 : IProduct
+                {
+                    public string Operation()
+                    {
+                        return "{Result of ConcreteProduct2}";
+                    }
+                }
+            
+                class Client
+                {
+                    public void Main()
+                    {
+                        Console.WriteLine("App: Launched with the ConcreteCreator1.");
+                        ClientCode(new ConcreteCreator1());
+                        
+                        Console.WriteLine("");
+            
+                        Console.WriteLine("App: Launched with the ConcreteCreator2.");
+                        ClientCode(new ConcreteCreator2());
+                    }
+
+                    public void ClientCode(Creator creator)
+                    {
+                        Console.WriteLine("Client: I'm not aware of the creator's class," +
+                            "but it still works.\n" + creator.SomeOperation());
+                    }
+                }
+            
+                class Program
+                {
+                    static void Main(string[] args)
+                    {
+                        new Client().Main();
+                    }
+                }
+            }
+        </pre>
+    </section>
+</div>
+</main>
+
+<div class="footer">
+    <footer>
+           <div class="row">
+            <div>
+                <h3 class="footer-titles">Слідкуй за нами!</h3>
+                     <a href="https:/twitter.com/Lov1tsk1y" target="_blank" class="footer-social-network-icons">
+                         <img src="https://uploads-ssl.webflow.com/5966ea9a9217ca534caf139f/5c8dbf0a2f2b67e3b3ba079c_Twitter%20Icon.svg" width="20" alt="Twitter icon">
+                     </a>
+                     <a href="https://instagram.com/kam1z1le?igshid=OGQ5ZDc2ODk2ZA==" target="_blank" class="footer-social-network-icons">
+                         <img src="https://uploads-ssl.webflow.com/5966ea9a9217ca534caf139f/5c8dbfe70fcf5a0514c5b1da_Instagram%20Icon.svg" width="20" alt="Instagram icon">
+                     </a>
+                     <a href="https://www.linkedin.com/in/vadim-novitskyi-2aa965284" target="_blank" class="footer-social-network-icons">
+                         <img src="https://uploads-ssl.webflow.com/5966ea9a9217ca534caf139f/5c8dc0002f2b676eb4ba0869_LinkedIn%20Icon.svg" width="20" alt="LinkedIn Icon">
+                     </a>
+            </div>
+        
+           <div class="row">
+                <ul>
+                    <li><a href="home-page.html" rel="stylesheet">Головна</a></li>
+                    <li><a href="paterns-page.html">Патерни</a></li>
+                </ul>
+            </div>
+        
+            <div class="row">
+                ЗРОБЛЕНО СТУДЕНТОМ групи П-732-42 @ 2023
+             </div>
+      </footer> 
+    </div>
+
+<script src="copyText.js"></script>
+<script src="modal.js"></script>
+<script src="validForm.js"></script>
+
+</body>
+</html>
